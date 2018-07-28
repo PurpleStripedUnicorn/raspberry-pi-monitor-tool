@@ -16,6 +16,7 @@ The following things are or may be required for the monitoring tool to work prop
 * All scripts have permission to use the "exec()" function in PHP (setting the folder's
 permission to 777 is enough most of the time)
 * Have "sysstat" installed on your raspberry pi
+* Have the latest version of raspbian installed
 
 ## Troubleshooting
 It may be possible that you are experiencing bugs or other abnormalities. Please
