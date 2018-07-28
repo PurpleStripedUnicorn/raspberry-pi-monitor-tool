@@ -62,3 +62,12 @@ h1 > span {
     background-color: rgb(76, 224, 152);
     border-radius: 5px;
 }
+
+/* override old td styling */
+.cpu_usage_alert td {
+    background-color: initial !important;
+    display: none;
+    color: #999 !important;
+    font-size: .72em !important;
+    text-align: center !important;
+}

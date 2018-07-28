@@ -7,21 +7,33 @@ $start_time = microtime(true);
 
 
 ### CPU USAGE ###
-# one command to get all usage
+# first, check if this feature is supported
 exec(
-    "mpstat 1 1 -P ALL | awk '$12 ~ /[0-9.]+/ { print 100 - $12 }'",
-    $cpu_usage
+    "dpkg -s sysstat | grep 'install ok' | wc -l",
+    $cpu_supported
 );
-# all cores combined
-$result["cpu_usage"] = number_format( $cpu_usage[0], 2, ".", "," );
-# core 0
-$result["cpu_usage_core0"] = number_format( $cpu_usage[1], 2, ".", "," );
-# core 1
-$result["cpu_usage_core1"] = number_format( $cpu_usage[2], 2, ".", "," );
-# core 2
-$result["cpu_usage_core2"] = number_format( $cpu_usage[3], 2, ".", "," );
-# core 3
-$result["cpu_usage_core3"] = number_format( $cpu_usage[4], 2, ".", "," );
+if ($cpu_supported[sizeof($cpu_supported) - 1] == 1) {
+    # feature is supported
+    # one command to get all usage
+    exec(
+        "mpstat 1 1 -P ALL | awk '$12 ~ /[0-9.]+/ { print 100 - $12 }'",
+        $cpu_usage
+    );
+    # all cores combined
+    $result["cpu_usage"] = number_format( $cpu_usage[0], 2, ".", "," );
+    # core 0
+    $result["cpu_usage_core0"] = number_format( $cpu_usage[1], 2, ".", "," );
+    # core 1
+    $result["cpu_usage_core1"] = number_format( $cpu_usage[2], 2, ".", "," );
+    # core 2
+    $result["cpu_usage_core2"] = number_format( $cpu_usage[3], 2, ".", "," );
+    # core 3
+    $result["cpu_usage_core3"] = number_format( $cpu_usage[4], 2, ".", "," );
+    $result["cpu_support"] = true;
+} else {
+    $result["cpu_support"] = false;
+    sleep(1);
+}
 
 
 

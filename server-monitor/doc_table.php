@@ -3,31 +3,36 @@
 
         <tr><th colspan=2>CPU</th></tr>
 
-        <tr>
+        <tr class="cpu_usage_alert">
+            <td colspan=2>This feature isn't fully available, please install
+            sysstat to see data about cpu load</td>
+        </tr>
+
+        <tr class="cpu_usage_item">
             <td>cpu usage (total)</td>
             <td data-output="cpu_usage_color">
                 <span data-output="cpu_usage">0</span>%
             </td>
         </tr>
-        <tr>
+        <tr class="cpu_usage_item">
             <td>cpu usage (core0)</td>
             <td data-output="cpu_usage_color_core0">
                 <span data-output="cpu_usage_core0">0</span>%
             </td>
         </tr>
-        <tr>
+        <tr class="cpu_usage_item">
             <td>cpu usage (core1)</td>
             <td data-output="cpu_usage_color_core1">
                 <span data-output="cpu_usage_core1">0</span>%
             </td>
         </tr>
-        <tr>
+        <tr class="cpu_usage_item">
             <td>cpu usage (core2)</td>
             <td data-output="cpu_usage_color_core2">
                 <span data-output="cpu_usage_core2">0</span>%
             </td>
         </tr>
-        <tr>
+        <tr class="cpu_usage_item">
             <td>cpu usage (core3)</td>
             <td data-output="cpu_usage_color_core3">
                 <span data-output="cpu_usage_core3">0</span>%

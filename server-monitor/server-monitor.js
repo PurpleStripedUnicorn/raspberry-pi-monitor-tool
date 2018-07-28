@@ -28,27 +28,35 @@ function g () {
             // get the json data (already decoded) and process each value
 
             // CPU usage
-            var cpu_checks = ["", "_core0", "_core1", "_core2", "_core3"];
-            // go over every element that involves cpu usage (total + every core)
-            for (i = 0; i < cpu_checks.length; i++) {
-                $( "[data-output=cpu_usage"+cpu_checks[i]+"]" ).html( data["cpu_usage"+cpu_checks[i]] );
-                // set color
-                var usage = Number(data["cpu_usage"+cpu_checks[i]]);
-                var orange_mid = 25; // value between 0 and 100
-                // green:   rgb(96, 239, 86)
-                // orange:  rgb(239, 196, 86)
-                // red: rgb(242, 89, 89)
-                var r = (usage < orange_mid) ?
-                        (green["r"] + (usage / orange_mid) * (orange["r"] - green["r"])) :
-                        (orange["r"] + ((usage - orange_mid) / (100 - orange_mid)) * (red["r"] - orange["r"]));
-                var g = (usage < orange_mid) ?
-                        (green["g"] + (usage / orange_mid) * (orange["g"] - green["g"])) :
-                        (orange["g"] + ((usage - orange_mid) / (100 - orange_mid)) * (red["g"] - orange["g"]));
-                var b = (usage < orange_mid) ?
-                        (green["b"] + (usage / orange_mid) * (orange["b"] - green["b"])) :
-                        (orange["b"] + ((usage - orange_mid) / (100 - orange_mid)) * (red["b"] - orange["b"]));
-                $( "[data-output=cpu_usage_color"+cpu_checks[i]+"]" ).css( "background-color", "rgb("+r+","+g+","+b+")" );
-                $( "[data-output=cpu_usage_color"+cpu_checks[i]+"]" ).css( "color", "white" );
+            // check if this feature is supported
+            if (!data["cpu_support"]) {
+                // feature isn't supported, show message
+                $( ".cpu_usage_alert td" ).css( "display", "initial" );
+                $( ".cpu_usage_item" ).remove();
+            } else {
+                // feature is supported, go on
+                var cpu_checks = ["", "_core0", "_core1", "_core2", "_core3"];
+                // go over every element that involves cpu usage (total + every core)
+                for (i = 0; i < cpu_checks.length; i++) {
+                    $( "[data-output=cpu_usage"+cpu_checks[i]+"]" ).html( data["cpu_usage"+cpu_checks[i]] );
+                    // set color
+                    var usage = Number(data["cpu_usage"+cpu_checks[i]]);
+                    var orange_mid = 25; // value between 0 and 100
+                    // green:   rgb(96, 239, 86)
+                    // orange:  rgb(239, 196, 86)
+                    // red: rgb(242, 89, 89)
+                    var r = (usage < orange_mid) ?
+                    (green["r"] + (usage / orange_mid) * (orange["r"] - green["r"])) :
+                    (orange["r"] + ((usage - orange_mid) / (100 - orange_mid)) * (red["r"] - orange["r"]));
+                    var g = (usage < orange_mid) ?
+                    (green["g"] + (usage / orange_mid) * (orange["g"] - green["g"])) :
+                    (orange["g"] + ((usage - orange_mid) / (100 - orange_mid)) * (red["g"] - orange["g"]));
+                    var b = (usage < orange_mid) ?
+                    (green["b"] + (usage / orange_mid) * (orange["b"] - green["b"])) :
+                    (orange["b"] + ((usage - orange_mid) / (100 - orange_mid)) * (red["b"] - orange["b"]));
+                    $( "[data-output=cpu_usage_color"+cpu_checks[i]+"]" ).css( "background-color", "rgb("+r+","+g+","+b+")" );
+                    $( "[data-output=cpu_usage_color"+cpu_checks[i]+"]" ).css( "color", "white" );
+                }
             }
 
             // CPU TEMPERATURE
