@@ -10,7 +10,7 @@
     <!-- jQuery is required for the scripts that retrieve the data -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- main styling -->
-    <link rel="stylesheet" type="text/css" href="../server-monitor.css" />
+    <link rel="stylesheet" type="text/css" href="./server-monitor.css" />
 
 </head>
 <body>
@@ -91,8 +91,8 @@
 
     <!-- script for updating the statistics
          also set the location of the get.php file relative to this file -->
-    <script>var get_loc; get_loc = "../get.php";</script>
-    <script type="text/javascript" src="../server-monitor.js"></script>
+    <script>var get_loc; get_loc = "./get.php";</script>
+    <script type="text/javascript" src="./server-monitor.js"></script>
 
 </body>
 </html>
