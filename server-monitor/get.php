@@ -20,18 +20,16 @@ if ($cpu_supported[sizeof($cpu_supported) - 1] == 1) {
         $cpu_usage
     );
     # all cores combined
-    $result["cpu_usage"] = number_format( $cpu_usage[0], 2, ".", "," );
+    $result["cpu_usage_total"] = (string)$cpu_usage[0];
     # core 0
-    $result["cpu_usage_core0"] = number_format( $cpu_usage[1], 2, ".", "," );
+    $result["cpu_usage_core0"] = (string)$cpu_usage[1];
     # core 1
-    $result["cpu_usage_core1"] = number_format( $cpu_usage[2], 2, ".", "," );
+    $result["cpu_usage_core1"] = (string)$cpu_usage[2];
     # core 2
-    $result["cpu_usage_core2"] = number_format( $cpu_usage[3], 2, ".", "," );
+    $result["cpu_usage_core2"] = (string)$cpu_usage[3];
     # core 3
-    $result["cpu_usage_core3"] = number_format( $cpu_usage[4], 2, ".", "," );
-    $result["cpu_support"] = true;
+    $result["cpu_usage_core3"] = (string)$cpu_usage[4];
 } else {
-    $result["cpu_support"] = false;
     sleep(1);
 }
 
@@ -42,55 +40,43 @@ exec(
     "cat /sys/class/thermal/thermal_zone0/temp",
     $cpu_temp
 );
-$cpu_temp = number_format((int)$cpu_temp[0] * 0.001, 1, ".", ",");
-$result["cpu_temp"] = $cpu_temp . "°C";
+$cpu_temp = (string)((int)$cpu_temp[0] * 0.001);
+$result["temp_cpu"] = $cpu_temp;
 
 
 
-### TOTAL DISK SPACE ###
+### DISK SPACE ###
+# use 1 command to get all info
 exec(
-    "df -h | awk '$2 { print $2 }' | sed -n '2 p'",
-    $total_disk_space
+    ("df --block-size 1 | awk '$2 { print $2 }' | sed -n '2 p' && ".
+     "df --block-size 1 | awk '$3 { print $3 }' | sed -n '2 p' && ".
+     "df --block-size 1 | awk '$4 { print $4 }' | sed -n '2 p'"),
+    $disk_space
 );
-$result["storage_total"] = $total_disk_space[0]."iB";
-
-
-
-### FREE DISK SPACE ###
-exec(
-    "df -h | awk '$4 { print $4 }' | sed -n '2 p'",
-    $free_disk_space
-);
-$result["storage_free"] = $free_disk_space[0]."iB";
-
-
-
-### USED DISK SPACE ###
-exec(
-    "df -h | awk '$3 { print $3 }' | sed -n '2 p'",
-    $used_disk_space
-);
-$result["storage_used"] = $used_disk_space[0]."iB";
+$result["storage_total"] = (string)$disk_space[0];
+$result["storage_used"] = (string)$disk_space[1];
+$result["storage_free"] = (string)$disk_space[2];
 
 
 
 ### RAM USAGE/DISTRIBUTION ###
 # one command for all info
+# all returned values are in megabytes
 exec(
-    ("free -m | awk '$2 { print $2 }' | sed -n '2 p' && ".
-     "free -m | awk '$3 { print $3 }' | sed -n '2 p' && ".
-     "free -m | awk '$4 { print $4 }' | sed -n '2 p' && ".
-     "free -m | awk '$5 { print $5 }' | sed -n '2 p' && ".
-     "free -m | awk '$6 { print $6 }' | sed -n '2 p' && ".
-     "free -m | awk '$7 { print $7 }' | sed -n '1 p'"),
+    ("free -b | awk '$2 { print $2 }' | sed -n '2 p' && ".
+     "free -b | awk '$3 { print $3 }' | sed -n '2 p' && ".
+     "free -b | awk '$4 { print $4 }' | sed -n '2 p' && ".
+     "free -b | awk '$5 { print $5 }' | sed -n '2 p' && ".
+     "free -b | awk '$6 { print $6 }' | sed -n '2 p' && ".
+     "free -b | awk '$7 { print $7 }' | sed -n '1 p'"),
     $ram_usage
 );
-$result["ram_total"] = $ram_usage[0]."M";
-$result["ram_used"] = $ram_usage[1]."M";
-$result["ram_free"] = $ram_usage[2]."M";
-$result["ram_shared"] = $ram_usage[3]."M";
-$result["ram_buff_cache"] = $ram_usage[4]."M";
-$result["ram_available"] = $ram_usage[5]."M";
+$result["ram_total"] = (string)$ram_usage[0];
+$result["ram_used"] = (string)$ram_usage[1];
+$result["ram_free"] = (string)$ram_usage[2];
+$result["ram_shared"] = (string)$ram_usage[3];
+$result["ram_buff_cache"] = (string)$ram_usage[4];
+$result["ram_available"] = (string)$ram_usage[5];
 
 
 

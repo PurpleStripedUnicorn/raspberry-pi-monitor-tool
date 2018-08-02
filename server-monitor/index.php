@@ -5,7 +5,9 @@
     <!-- title at the top of the screen -->
     <title>Server monitor</title>
 
-    <!-- jQuery is required for script at the end of the document -->
+    <!-- google font for better styling -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:500|Open+Sans" rel="stylesheet">
+    <!-- jQuery is required for the scripts that retrieve the data -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- main styling -->
     <link rel="stylesheet" type="text/css" href="server-monitor.css" />
@@ -14,19 +16,31 @@
 <body>
 
     <div class="main_container">
-        <div>
-            <h1><span>server status</span></h1>
+        <div class="top_title">
+            <h1>server monitor</h1>
+        </div>
+        <div class="content tile_container">
 
-            <?php include "doc_table.php"; ?>
+            <!-- all tiles with information -->
+            <div class="tile">
+                <?php include "tile/cpu.php"; ?>
+            </div>
+            <div class="tile">
+                <?php include "tile/ram.php"; ?>
+            </div>
+            <div class="tile">
+                <?php include "tile/storage.php"; ?>
+            </div>
+            <div class="tile">
+                <?php include "tile/temps.php"; ?>
+            </div>
 
-            <p class="tiny_bottom">
-                <!-- time it took to process the last query -->
-                Query processing time: <span data-output="query_time">0.000s</span>
-            </p>
         </div>
     </div>
 
-    <!-- script for updating the statistics -->
+    <!-- script for updating the statistics
+         also set the location of the get.php file relative to this file -->
+    <script>var get_loc; get_loc = "./get.php";</script>
     <script type="text/javascript" src="server-monitor.js"></script>
 
 </body>
