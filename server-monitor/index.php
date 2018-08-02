@@ -1,4 +1,4 @@
-<?php include "./head_message.php"; ?>
+<?php include "./head_message.html"; ?>
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
