@@ -5,7 +5,7 @@ read the following document before using the software on your website or server.
 
 ## How it works
 You add the [server-monitor folder](../master/server-monitor/) folder to the root directory of
-your website. Now go to http://your-website.com/server-monitor and see the results.
+your website. Now go to your-website.com/server-monitor and see the results.
 (You do not need a domain name, an IP address is enough)
 
 ## Requirements
