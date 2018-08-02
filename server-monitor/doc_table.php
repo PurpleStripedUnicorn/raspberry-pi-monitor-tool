@@ -1,3 +1,4 @@
+<?php # make sure file gets identified as PHP ?>
 <table>
     <tbody>
 
