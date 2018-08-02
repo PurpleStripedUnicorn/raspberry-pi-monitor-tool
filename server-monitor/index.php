@@ -24,16 +24,16 @@
 
             <!-- all tiles with information -->
             <div class="tile">
-                <?php include "tile/cpu.php"; ?>
+                <?php include "tile/cpu.html"; ?>
             </div>
             <div class="tile">
-                <?php include "tile/ram.php"; ?>
+                <?php include "tile/ram.html"; ?>
             </div>
             <div class="tile">
-                <?php include "tile/storage.php"; ?>
+                <?php include "tile/storage.html"; ?>
             </div>
             <div class="tile">
-                <?php include "tile/temps.php"; ?>
+                <?php include "tile/temps.html"; ?>
             </div>
 
         </div>
