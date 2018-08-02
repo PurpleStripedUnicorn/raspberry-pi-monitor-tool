@@ -6,5 +6,5 @@
     </div>
 </div>
 <div class="tile_more_button">
-    <a href="./temps/">more info</a>
+    <a href="./temps.php">more info</a>
 </div>
