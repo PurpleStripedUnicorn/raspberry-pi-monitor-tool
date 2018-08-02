@@ -6,5 +6,5 @@
     </div>
 </div>
 <div class="tile_more_button">
-    <a href="./cpu.php">more info</a>
+    <a href="./cpu/">more info</a>
 </div>

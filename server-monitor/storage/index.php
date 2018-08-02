@@ -1,3 +1,4 @@
+<?php include "../head_message.php"; ?>
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -10,7 +11,7 @@
     <!-- jQuery is required for the scripts that retrieve the data -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- main styling -->
-    <link rel="stylesheet" type="text/css" href="./server-monitor.css" />
+    <link rel="stylesheet" type="text/css" href="../server-monitor.css" />
 
 </head>
 <body>
@@ -27,46 +28,28 @@
 
                         <tr>
                             <td>
-                                CPU usage (total)
+                                Total storage
                             </td>
                             <td>
-                                <span data-output="cpu_usage_total">-</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                CPU usage (core 0)
-                            </td>
-                            <td>
-                                <span data-output="cpu_usage_core0">-</span>
+                                <span data-output="storage_total">-</span>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                CPU usage (core 1)
+                                Used storage
                             </td>
                             <td>
-                                <span data-output="cpu_usage_core1">-</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                CPU usage (core 2)
-                            </td>
-                            <td>
-                                <span data-output="cpu_usage_core2">-</span>
+                                <span data-output="storage_used">-</span>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                CPU usage (core 3)
+                                Free storage
                             </td>
                             <td>
-                                <span data-output="cpu_usage_core3">-</span>
+                                <span data-output="storage_free">-</span>
                             </td>
                         </tr>
 
@@ -74,10 +57,7 @@
                 </table>
             </div>
             <div class="detail_right">
-                <h1>Total CPU usage (%)</h1>
-                <div class="graph_container"
-                     data-output-graph="cpu_usage_total">
-                </div>
+
             </div>
 
         </div>
@@ -85,8 +65,8 @@
 
     <!-- script for updating the statistics
          also set the location of the get.php file relative to this file -->
-    <script>var get_loc; get_loc = "./get.php";</script>
-    <script type="text/javascript" src="./server-monitor.js"></script>
+    <script>var get_loc; get_loc = "../get.php";</script>
+    <script type="text/javascript" src="../server-monitor.js"></script>
 
 </body>
 </html>
