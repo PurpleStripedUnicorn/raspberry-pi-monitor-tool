@@ -138,14 +138,20 @@ function g () {
                         case "ram_buff_cache":
                         case "ram_available":
                         // Number is too high to be coverted to number type
-                        var val_num = data[output_type];
+                        //   accurately, don't use directly in display!
+                        var val_num = Number(data[output_type]);
                         var val_str = String(data[output_type]);
-                        // add a suffix to the values when including it in the
-                        //   html (when indicated)
-                        // do this by letting the evaluation function for sizes
-                        //   process the string
+                        // check if a suffix should be added or a percentage
+                        //   should be shown
                         if ($obj.is("[data-output-process]")) {
+                            // add a suffix to the values when including it in the
+                            //   html (when indicated)
+                            // do this by letting the evaluation function for sizes
+                            //   process the string
                             val_str = process_size(val_str);
+                        } else if ($obj.is("[data-output-percent]")) {
+                            total = Number(data["ram_total"]);
+                            val_str = (val_num / total * 100).toFixed(2)+"%";
                         } else {
                             // add thousand separators to large number
                             val_str = thousand_sep(val_str);
@@ -158,12 +164,18 @@ function g () {
                         case "storage_total":
                         case "storage_used":
                         case "storage_free":
-                        // Number is too high to be coverted to number type
-                        var val_num = data[output_type];
+                        // Number is too high to be coverted to number type and
+                        //   be used accurately, be careful when using this!
+                        var val_num = Number(data[output_type]);
                         var val_str = String(data[output_type]);
-                        // check if suffixes should be added or not
+                        // check if suffixes should be added
+                        // also check if a percentage should be shown
                         if ($obj.is("[data-output-process]")) {
                             val_str = process_size(val_str);
+                        } else if ($obj.is("[data-output-percent]")) {
+                            // output percentage of total storage
+                            total = Number(data["storage_total"]);
+                            val_str = (val_num / total * 100).toFixed(2)+"%";
                         } else {
                             val_str = thousand_sep(val_str);
                         }

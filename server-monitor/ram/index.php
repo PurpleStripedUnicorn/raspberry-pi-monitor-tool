@@ -143,6 +143,65 @@
 
                     </tbody>
                 </table>
+                <table class="small_table">
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                RAM total (% of total)
+                            </td>
+                            <td>
+                                <span data-output="ram_total" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM used (% of total)
+                            </td>
+                            <td>
+                                <span data-output="ram_used" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM free (% of total)
+                            </td>
+                            <td>
+                                <span data-output="ram_free" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM shared (% of total)
+                            </td>
+                            <td>
+                                <span data-output="ram_shared" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM buff/cache (% of total)
+                            </td>
+                            <td>
+                                <span data-output="ram_buff_cache" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM available (% of total)
+                            </td>
+                            <td>
+                                <span data-output="ram_available" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
             <div class="detail_right">
 

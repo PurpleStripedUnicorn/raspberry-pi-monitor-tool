@@ -89,6 +89,38 @@
 
                     </tbody>
                 </table>
+                <table class="small_table">
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                Total storage (% of total)
+                            </td>
+                            <td>
+                                <span data-output="storage_total" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Used storage (% of total)
+                            </td>
+                            <td>
+                                <span data-output="storage_used" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Free storage (% of total)
+                            </td>
+                            <td>
+                                <span data-output="storage_free" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
             <div class="detail_right">
 

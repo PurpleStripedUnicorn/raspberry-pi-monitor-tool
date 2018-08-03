@@ -208,6 +208,7 @@ body {
 
 .small_table {
     width: 100%;
+    margin: 15px 0;
 }
 
 .small_table tbody {
