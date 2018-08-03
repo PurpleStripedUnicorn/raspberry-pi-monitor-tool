@@ -6,13 +6,8 @@
     <!-- title at the top of the screen -->
     <title>Server monitor</title>
 
-    <!-- google font for better styling -->
-    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:500|Open+Sans" rel="stylesheet">
-    <!-- jQuery is required for the scripts that retrieve the data -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- main styling -->
-    <link rel="stylesheet" type="text/css" href="../server-monitor.css" />
-    <meta name="viewport" content="width=screen-width, initial-scale=1.0" />
+    <base href="../" />
+    <?php include "../top.html"; ?>
 
 </head>
 <body>
@@ -209,11 +204,6 @@
 
         </div>
     </div>
-
-    <!-- script for updating the statistics
-         also set the location of the get.php file relative to this file -->
-    <script>var get_loc; get_loc = "../get.php";</script>
-    <script type="text/javascript" src="../server-monitor.js"></script>
 
 </body>
 </html>

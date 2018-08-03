@@ -53,9 +53,8 @@ function process_size (input) {
 // function to get all data
 function g () {
     // send an ajax request to the get.php page
-    // the location of this file is defined in the file referring to this script
     $.ajax({
-        url: get_loc, // location is defined in file
+        url: "get.php",
         type: "post", // send post request
         dataType: "json", // returned data type is JSON
         // function for if data is retrieved successfully
