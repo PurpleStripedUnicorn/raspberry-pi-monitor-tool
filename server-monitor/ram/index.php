@@ -32,7 +32,7 @@
                                 Total RAM
                             </td>
                             <td>
-                                <span data-output="ram_total">-</span>
+                                <span data-output="ram_total" data-output-process>-</span>
                             </td>
                         </tr>
 
@@ -41,7 +41,7 @@
                                 RAM used
                             </td>
                             <td>
-                                <span data-output="ram_used">-</span>
+                                <span data-output="ram_used" data-output-process>-</span>
                             </td>
                         </tr>
 
@@ -50,7 +50,7 @@
                                 RAM free
                             </td>
                             <td>
-                                <span data-output="ram_free">-</span>
+                                <span data-output="ram_free" data-output-process>-</span>
                             </td>
                         </tr>
 
@@ -59,7 +59,7 @@
                                 RAM shared
                             </td>
                             <td>
-                                <span data-output="ram_shared">-</span>
+                                <span data-output="ram_shared" data-output-process>-</span>
                             </td>
                         </tr>
 
@@ -68,13 +68,73 @@
                                 RAM buff/cache
                             </td>
                             <td>
-                                <span data-output="ram_buff_cache">-</span>
+                                <span data-output="ram_buff_cache" data-output-process>-</span>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 RAM available
+                            </td>
+                            <td>
+                                <span data-output="ram_available" data-output-process>-</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <h2 class="small_table_title">details</h2>
+                <table class="small_table">
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                Total RAM (bytes)
+                            </td>
+                            <td>
+                                <span data-output="ram_total">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM used (bytes)
+                            </td>
+                            <td>
+                                <span data-output="ram_used">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM free (bytes)
+                            </td>
+                            <td>
+                                <span data-output="ram_free">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM shared (bytes)
+                            </td>
+                            <td>
+                                <span data-output="ram_shared">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM buff/cache (bytes)
+                            </td>
+                            <td>
+                                <span data-output="ram_buff_cache">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                RAM available (bytes)
                             </td>
                             <td>
                                 <span data-output="ram_available">-</span>

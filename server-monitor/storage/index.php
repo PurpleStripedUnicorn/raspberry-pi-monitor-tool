@@ -32,7 +32,7 @@
                                 Total storage
                             </td>
                             <td>
-                                <span data-output="storage_total">-</span>
+                                <span data-output="storage_total" data-output-process>-</span>
                             </td>
                         </tr>
 
@@ -41,13 +41,46 @@
                                 Used storage
                             </td>
                             <td>
-                                <span data-output="storage_used">-</span>
+                                <span data-output="storage_used" data-output-process>-</span>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 Free storage
+                            </td>
+                            <td>
+                                <span data-output="storage_free" data-output-process>-</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <h2 class="small_table_title">details</h2>
+                <table class="small_table">
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                Total storage (bytes)
+                            </td>
+                            <td>
+                                <span data-output="storage_total">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Used storage (bytes)
+                            </td>
+                            <td>
+                                <span data-output="storage_used">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Free storage (bytes)
                             </td>
                             <td>
                                 <span data-output="storage_free">-</span>

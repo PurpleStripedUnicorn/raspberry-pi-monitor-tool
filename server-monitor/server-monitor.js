@@ -1,3 +1,13 @@
+// function for adding thousands separators
+function thousand_sep (x) {
+    // devide into parts before and after dot
+    var parts = x.toString().split(".");
+    // use a space as thousands separator
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    // join parts back together and join
+    return parts.join(".");
+}
+
 // function for making large number human readable by adding a suffix to
 //   indicate size
 function process_size (input) {
@@ -131,10 +141,16 @@ function g () {
                         var val_num = data[output_type];
                         var val_str = String(data[output_type]);
                         // add a suffix to the values when including it in the
-                        //   html
+                        //   html (when indicated)
                         // do this by letting the evaluation function for sizes
                         //   process the string
-                        $obj.html( process_size(val_str) );
+                        if ($obj.is("[data-output-process]")) {
+                            val_str = process_size(val_str);
+                        } else {
+                            // add thousand separators to large number
+                            val_str = thousand_sep(val_str);
+                        }
+                        $obj.html( val_str );
                         break;
 
 
@@ -145,8 +161,15 @@ function g () {
                         // Number is too high to be coverted to number type
                         var val_num = data[output_type];
                         var val_str = String(data[output_type]);
-                        // output html processed to add optional suffixes
-                        $obj.html( process_size(val_str) );
+                        // check if suffixes should be added or not
+                        if ($obj.is("[data-output-process]")) {
+                            val_str = process_size(val_str);
+                        } else {
+                            val_str = thousand_sep(val_str);
+                        }
+                        // output html processed to add optional suffixes or
+                        //   thousand separators
+                        $obj.html( val_str );
                         break;
 
 

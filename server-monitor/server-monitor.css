@@ -199,6 +199,34 @@ body {
     font-size: 1.3em;
 }
 
+.small_table_title {
+    margin-top: 20px;
+    color: grey;
+    font-family: "Open sans", sans-serif;
+    text-align: center;
+}
+
+.small_table {
+    width: 100%;
+}
+
+.small_table tbody {
+    font-family: monospace;
+}
+
+.small_table td {
+    padding: 4px 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.small_table td:first-child {
+    color: grey;
+}
+
+.small_table td:last-child {
+    text-align: right;
+}
+
 /* override old td styling */
 .cpu_usage_alert td {
     background-color: initial !important;
