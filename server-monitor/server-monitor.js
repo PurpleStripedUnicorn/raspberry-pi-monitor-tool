@@ -1,3 +1,30 @@
+
+// function for getting a value on a grdient, input are objects of start and end
+//   of gradient and the progress (0-1) through the gradient from start to end
+function get_gradient (start, end, progress) {
+    // scale progress differently
+    // make low values a lot higher and high values a little bit higher
+    progress = Math.sqrt(progress);
+    // take the value of the progress on red, green and blue
+    g_r = (end.r - start.r) * progress + start.r;
+    g_g = (end.g - start.g) * progress + start.g;
+    g_b = (end.b - start.b) * progress + start.b;
+    obj = { r: g_r, g: g_g, b: g_b }
+    // return the values as object
+    return obj;
+}
+
+// function to return "get_gradient()" result as a string directly
+// same inputs as "get_gradient()" function
+function get_gradient_string (start, end, progress) {
+    // get the gradient object
+    gradient = get_gradient(start, end, progress);
+    // convert to string
+    s = "rgb(" + gradient.r + "," + gradient.g + "," + gradient.b + ")";
+    // return the generated string
+    return s;
+}
+
 // function for adding thousands separators
 function thousand_sep (x) {
     // devide into parts before and after dot
@@ -100,8 +127,21 @@ function g () {
                             // check if the background of the element needs to be
                             //   colored
                             if ($obj.is("[data-output-colored]")) {
-                                // work in progress
-                                // ...
+                                // change the background color based on a point
+                                //   on a gradient
+                                c_gradient_start = { r: 238, g: 238, b: 238 }
+                                c_gradient_end = { r: 90, g: 150, b: 230 }
+                                // get gradient string based on output value
+                                // (devided by 100 for real value)
+                                bg_color = get_gradient_string(
+                                    c_gradient_start,
+                                    c_gradient_end,
+                                    val_num / 100
+                                );
+                                // make text white if over value 40%
+                                color = (val_num > 40) ? "white" : "#666";
+                                $obj.parent().css( "background-color", bg_color );
+                                $obj.css( "color", color );
                             }
                             // set the HTML of the object
                             // add percent sign to the value

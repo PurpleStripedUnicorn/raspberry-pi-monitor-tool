@@ -27,7 +27,7 @@
                                 CPU usage (total)
                             </td>
                             <td>
-                                <span data-output="cpu_usage_total">-</span>
+                                <span data-output="cpu_usage_total" data-output-colored>-</span>
                             </td>
                         </tr>
 
@@ -36,7 +36,7 @@
                                 CPU usage (core 0)
                             </td>
                             <td>
-                                <span data-output="cpu_usage_core0">-</span>
+                                <span data-output="cpu_usage_core0" data-output-colored>-</span>
                             </td>
                         </tr>
 
@@ -45,7 +45,7 @@
                                 CPU usage (core 1)
                             </td>
                             <td>
-                                <span data-output="cpu_usage_core1">-</span>
+                                <span data-output="cpu_usage_core1" data-output-colored>-</span>
                             </td>
                         </tr>
 
@@ -54,7 +54,7 @@
                                 CPU usage (core 2)
                             </td>
                             <td>
-                                <span data-output="cpu_usage_core2">-</span>
+                                <span data-output="cpu_usage_core2" data-output-colored>-</span>
                             </td>
                         </tr>
 
