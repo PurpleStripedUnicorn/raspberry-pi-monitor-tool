@@ -63,7 +63,7 @@
                                 CPU usage (core 3)
                             </td>
                             <td>
-                                <span data-output="cpu_usage_core3">-</span>
+                                <span data-output="cpu_usage_core3" data-output-colored>-</span>
                             </td>
                         </tr>
 
