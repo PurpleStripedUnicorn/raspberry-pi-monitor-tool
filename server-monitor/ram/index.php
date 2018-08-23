@@ -44,7 +44,7 @@
 
                         <tr>
                             <td>
-                                <div class="graph_indicator" style="background-color: transparent;"></div>
+                                <div class="graph_indicator" style="background-color: #eee;"></div>
                                 RAM free
                             </td>
                             <td>
