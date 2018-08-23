@@ -71,9 +71,29 @@
                 </table>
             </div>
             <div class="detail_right">
-                <h1>Total CPU usage (%)</h1>
+                <h1>CPU usage - total (%)</h1>
                 <div class="graph_container"
                      data-output-graph="cpu_usage_total">
+                </div>
+
+                <h1>CPU usage - core 0 (%)</h1>
+                <div class="graph_container"
+                     data-output-graph="cpu_usage_core0">
+                </div>
+
+                <h1>CPU usage - core 1 (%)</h1>
+                <div class="graph_container"
+                     data-output-graph="cpu_usage_core1">
+                </div>
+
+                <h1>CPU usage - core 2 (%)</h1>
+                <div class="graph_container"
+                     data-output-graph="cpu_usage_core2">
+                </div>
+
+                <h1>CPU usage - core 3 (%)</h1>
+                <div class="graph_container"
+                     data-output-graph="cpu_usage_core3">
                 </div>
             </div>
 
