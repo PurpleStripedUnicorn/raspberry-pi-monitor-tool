@@ -205,7 +205,7 @@
                 </table>
             </div>
             <div class="detail_right">
-                <h1>CPU usage - total (%)</h1>
+                <h1>RAM usage overview</h1>
                 <div class="graph_container"
                      data-output-graph="ram_total">
                 </div>
