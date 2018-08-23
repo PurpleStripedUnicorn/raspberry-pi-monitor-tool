@@ -125,10 +125,11 @@ body {
 }
 
 .detail_right {
-    flex-basis: 500px;
+    flex-basis: auto;
     flex-shrink: 2;
     flex-grow: 0;
     margin-left: 7px;
+    max-width: 500px;
 }
 
 /* hide the graph view on smaller screens */
