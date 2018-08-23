@@ -159,8 +159,8 @@ body {
 
 .graph_entry {
     min-width: 3px;
-    width: 4%;
-    flex-shrink: 1;
+    width: 3px;
+    flex-shrink: 0;
     flex-grow: 0;
     flex-basis: auto;
     display: flex;
