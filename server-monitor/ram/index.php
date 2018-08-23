@@ -72,16 +72,6 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>
-                                <div class="graph_indicator" style="background-color: transparent;"></div>
-                                RAM available
-                            </td>
-                            <td>
-                                <span data-output="ram_available" data-output-process>-</span>
-                            </td>
-                        </tr>
-
                     </tbody>
                 </table>
                 <h2 class="small_table_title">details</h2>
