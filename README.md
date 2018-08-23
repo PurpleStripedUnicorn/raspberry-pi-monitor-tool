@@ -31,3 +31,8 @@ The following programming languages and libraries were used for this tool:
 * CSS
 * PHP
 * Linux shell
+
+## Fonts used
+Fonts are from [Google Fonts](https://fonts.google.com/).
+* Open Sans (by Steve Matteson)
+* Maven Pro (by Joe Prince)
