@@ -137,6 +137,10 @@ body {
     .detail_right {
         display: none;
     }
+    /* make sure to also hide graph indicators */
+    .graph_indicator {
+        display: none !important;
+    }
 }
 
 .detail_right h1 {
