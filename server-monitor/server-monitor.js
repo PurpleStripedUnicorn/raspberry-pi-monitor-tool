@@ -180,22 +180,40 @@ function g () {
                         //   accurately, don't use directly in display!
                         var val_num = Number(data[output_type]);
                         var val_str = String(data[output_type]);
-                        // check if a suffix should be added or a percentage
-                        //   should be shown
-                        if ($obj.is("[data-output-process]")) {
-                            // add a suffix to the values when including it in the
-                            //   html (when indicated)
-                            // do this by letting the evaluation function for sizes
-                            //   process the string
-                            val_str = process_size(val_str);
-                        } else if ($obj.is("[data-output-percent]")) {
+                        if ($obj.is("[data-output-graph]")) {
+                            // make graph with color coded parts
+                            // first, get the maximum of the graph from total
+                            //   ram value
                             total = Number(data["ram_total"]);
-                            val_str = (val_num / total * 100).toFixed(2)+"%";
+                            // get all values as percentages of total (except for
+                            //   free memory)
+                            used = (Number(data["ram_used"]) / total * 100).toFixed(3);
+                            shared = (Number(data["ram_shared"]) / total * 100).toFixed(3);
+                            buff_cache = (Number(data["ram_buff_cache"]) / total * 100).toFixed(3);
+                            // insert the entries into the graph
+                            $obj.append("<div class='graph_entry'>" +
+                                "<div style='height: " + shared + "%; background-color: #41d887;'></div>" +
+                                "<div style='height: " + buff_cache + "%; background-color: #9a4ce8;'></div>" +
+                                "<div style='height: " + used + "%; background-color: #ea8e54;'></div>" +
+                                "</div>");
                         } else {
-                            // add thousand separators to large number
-                            val_str = thousand_sep(val_str);
+                            // check if a suffix should be added or a percentage
+                            //   should be shown
+                            if ($obj.is("[data-output-process]")) {
+                                // add a suffix to the values when including it in the
+                                //   html (when indicated)
+                                // do this by letting the evaluation function for sizes
+                                //   process the string
+                                val_str = process_size(val_str);
+                            } else if ($obj.is("[data-output-percent]")) {
+                                total = Number(data["ram_total"]);
+                                val_str = (val_num / total * 100).toFixed(2)+"%";
+                            } else {
+                                // add thousand separators to large number
+                                val_str = thousand_sep(val_str);
+                            }
+                            $obj.html( val_str );
                         }
-                        $obj.html( val_str );
                         break;
 
 

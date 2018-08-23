@@ -24,6 +24,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: transparent;"></div>
                                 Total RAM
                             </td>
                             <td>
@@ -33,6 +34,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: #ea8e54;"></div>
                                 RAM used
                             </td>
                             <td>
@@ -42,6 +44,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: transparent;"></div>
                                 RAM free
                             </td>
                             <td>
@@ -51,6 +54,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: #41d887;"></div>
                                 RAM shared
                             </td>
                             <td>
@@ -60,6 +64,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: #9a4ce8;"></div>
                                 RAM buff/cache
                             </td>
                             <td>
@@ -69,6 +74,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: transparent;"></div>
                                 RAM available
                             </td>
                             <td>
@@ -199,7 +205,10 @@
                 </table>
             </div>
             <div class="detail_right">
-
+                <h1>CPU usage - total (%)</h1>
+                <div class="graph_container"
+                     data-output-graph="ram_total">
+                </div>
             </div>
 
         </div>
