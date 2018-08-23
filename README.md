@@ -4,7 +4,7 @@ With this tool you can easily monitor many of your raspberry pi's parts. Please
 read the following document before using the software on your website or server.
 
 ## How it works
-You add the [server-monitor folder](../master/server-monitor/) folder to the root directory of
+You add the [server-monitor](../master/server-monitor/) folder to the root directory of
 your website. Now go to your-website.com/server-monitor and see the results.
 (You do not need a domain name, an IP address is enough)
 
