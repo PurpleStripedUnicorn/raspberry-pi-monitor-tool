@@ -23,6 +23,16 @@ It may be possible that you are experiencing bugs or other abnormalities. Please
 make sure you have read the list included above and have confirmed all the
 criteria are met, before reporting any bugs.
 
+## How do I protect my server monitor?
+By default, the server monitor isn't protected in any way from people looking
+into your data. You can protect your data in several ways. A couple examples
+are:
+* Add a ".htaccess" file to the "server-monitor" folder. Add some rules to the
+file to restrict access from the outside
+* Add code to the "init.php" file, which runs on every page before the page is
+shown to the user. You can use the "exit" command in PHP to prevent the page
+from loading if necessary
+
 ## Other info
 ### Programming languages
 The following programming languages and libraries were used for this tool:
