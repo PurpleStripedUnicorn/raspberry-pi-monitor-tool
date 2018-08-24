@@ -1,3 +1,4 @@
+<?php include __DIR__."/init.php"; ?>
 <!-- google font for better styling -->
 <link href="https://fonts.googleapis.com/css?family=Maven+Pro:500|Open+Sans" rel="stylesheet">
 <!-- jQuery is required for the scripts that retrieve the data -->

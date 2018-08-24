@@ -1,4 +1,5 @@
-<?php include "../head_message.html"; ?>
+<?php include dirname(__DIR__)."/init.php"; ?>
+<?php include "../head_message.php"; ?>
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -7,7 +8,7 @@
     <title>Server monitor</title>
 
     <base href="../" />
-    <?php include "../top.html"; ?>
+    <?php include "../top.php"; ?>
 
 </head>
 <body>

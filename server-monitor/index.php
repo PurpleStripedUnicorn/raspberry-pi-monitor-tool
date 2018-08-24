@@ -1,4 +1,5 @@
-<?php include "./head_message.html"; ?>
+<?php include __DIR__."/init.php"; ?>
+<?php include "./head_message.php"; ?>
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -7,7 +8,7 @@
     <title>Server monitor</title>
 
     <base href="./" />
-    <?php include "./top.html"; ?>
+    <?php include "./top.php"; ?>
 
 </head>
 <body>
@@ -20,16 +21,16 @@
 
             <!-- all tiles with information -->
             <div class="tile">
-                <?php include "tile/cpu.html"; ?>
+                <?php include "tile/cpu.php"; ?>
             </div>
             <div class="tile">
-                <?php include "tile/ram.html"; ?>
+                <?php include "tile/ram.php"; ?>
             </div>
             <div class="tile">
-                <?php include "tile/storage.html"; ?>
+                <?php include "tile/storage.php"; ?>
             </div>
             <div class="tile">
-                <?php include "tile/temps.html"; ?>
+                <?php include "tile/temps.php"; ?>
             </div>
 
         </div>

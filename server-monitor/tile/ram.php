@@ -1,3 +1,4 @@
+<?php include dirname(__DIR__)."/init.php"; ?>
 <h2 class="tile_title">RAM</h2>
 <div class="tile_info_container">
     <div class="tile_info_item">
