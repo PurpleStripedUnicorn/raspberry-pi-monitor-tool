@@ -221,6 +221,7 @@ function g () {
                         case "storage_total":
                         case "storage_used":
                         case "storage_free":
+                        case "storage_reserved":
                         // Number is too high to be coverted to number type and
                         //   be used accurately, be careful when using this!
                         var val_num = Number(data[output_type]);

@@ -50,12 +50,14 @@ $result["temp_cpu"] = $cpu_temp;
 exec(
     ("df --block-size 1 | awk '$2 { print $2 }' | sed -n '2 p' && ".
      "df --block-size 1 | awk '$3 { print $3 }' | sed -n '2 p' && ".
-     "df --block-size 1 | awk '$4 { print $4 }' | sed -n '2 p'"),
+     "df --block-size 1 | awk '$4 { print $4 }' | sed -n '2 p' && ".
+     "df --block-size 1 | awk '{ print ($2 - $3 - $4) }' | sed -n '2 p'"),
     $disk_space
 );
 $result["storage_total"] = (string)$disk_space[0];
 $result["storage_used"] = (string)$disk_space[1];
 $result["storage_free"] = (string)$disk_space[2];
+$result["storage_reserved"] = (string)$disk_space[3];
 
 
 

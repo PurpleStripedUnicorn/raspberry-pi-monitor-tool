@@ -49,6 +49,15 @@
                             </td>
                         </tr>
 
+                        <tr>
+                            <td>
+                                Reserved storage
+                            </td>
+                            <td>
+                                <span data-output="storage_reserved" data-output-process>-</span>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
                 <h2 class="small_table_title">details</h2>
@@ -82,6 +91,15 @@
                             </td>
                         </tr>
 
+                        <tr>
+                            <td>
+                                Reserved storage (bytes)
+                            </td>
+                            <td>
+                                <span data-output="storage_reserved">-</span>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
                 <table class="small_table">
@@ -111,6 +129,15 @@
                             </td>
                             <td>
                                 <span data-output="storage_free" data-output-percent>-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Reserved storage (% of total)
+                            </td>
+                            <td>
+                                <span data-output="storage_reserved" data-output-percent>-</span>
                             </td>
                         </tr>
 
