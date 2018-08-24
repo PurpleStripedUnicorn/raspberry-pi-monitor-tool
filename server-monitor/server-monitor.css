@@ -242,11 +242,16 @@ body {
     text-align: right;
 }
 
-/* override old td styling */
-.cpu_usage_alert td {
-    background-color: initial !important;
-    display: none;
-    color: #999 !important;
-    font-size: .72em !important;
-    text-align: center !important;
+/* long bar graphs */
+.long_graph_bar {
+    width: 100%;
+    height: 30px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-radius: 7px;
 }

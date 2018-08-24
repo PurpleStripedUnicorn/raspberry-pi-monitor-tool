@@ -226,20 +226,32 @@ function g () {
                         //   be used accurately, be careful when using this!
                         var val_num = Number(data[output_type]);
                         var val_str = String(data[output_type]);
-                        // check if suffixes should be added
-                        // also check if a percentage should be shown
-                        if ($obj.is("[data-output-process]")) {
-                            val_str = process_size(val_str);
-                        } else if ($obj.is("[data-output-percent]")) {
-                            // output percentage of total storage
+                        // check if the output is a graph or not
+                        if ($obj.is("[data-output-graph]")) {
+                            // gather all info if object is a graph
                             total = Number(data["storage_total"]);
-                            val_str = (val_num / total * 100).toFixed(2)+"%";
+                            // get info as percentages
+                            used = Number(data["storage_used"]) / total * 100;
+                            reserved = Number(data["storage_reserved"]) / total * 100;
+                            // insert the new data into the graph (override)
+                            $obj.html("<div style='width: " + used + "%; background-color: #41d887;'></div>" +
+                                "<div style='width: " + reserved + "%; background-color: #9a4ce8;'></div>");
                         } else {
-                            val_str = thousand_sep(val_str);
+                            // check if suffixes should be added
+                            // also check if a percentage should be shown
+                            if ($obj.is("[data-output-process]")) {
+                                val_str = process_size(val_str);
+                            } else if ($obj.is("[data-output-percent]")) {
+                                // output percentage of total storage
+                                total = Number(data["storage_total"]);
+                                val_str = (val_num / total * 100).toFixed(2)+"%";
+                            } else {
+                                val_str = thousand_sep(val_str);
+                            }
+                            // output html processed to add optional suffixes or
+                            //   thousand separators
+                            $obj.html( val_str );
                         }
-                        // output html processed to add optional suffixes or
-                        //   thousand separators
-                        $obj.html( val_str );
                         break;
 
 

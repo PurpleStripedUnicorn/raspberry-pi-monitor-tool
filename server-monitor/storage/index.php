@@ -24,6 +24,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: transparent;"></div>
                                 Total storage
                             </td>
                             <td>
@@ -33,6 +34,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: #41d887;"></div>
                                 Used storage
                             </td>
                             <td>
@@ -42,6 +44,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: #eee;"></div>
                                 Free storage
                             </td>
                             <td>
@@ -51,6 +54,7 @@
 
                         <tr>
                             <td>
+                                <div class="graph_indicator" style="background-color: #9a4ce8;"></div>
                                 Reserved storage
                             </td>
                             <td>
@@ -145,7 +149,10 @@
                 </table>
             </div>
             <div class="detail_right">
+                <h1>Storage usage</h1>
+                <div class="long_graph_bar" data-output-graph="storage_total">
 
+                </div>
             </div>
 
         </div>
