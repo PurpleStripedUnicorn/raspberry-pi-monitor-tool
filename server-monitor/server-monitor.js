@@ -295,11 +295,12 @@ function g () {
             // check if there should be one first
             if (alarm_box_text.length == 0) {
                 // no text was found, remove existing alarm box
-                $( ".alarm_box" ).remove();
+                $( ".alarm_box" ).fadeOut();
             } else {
                 // text was found, add alarm if it doesn't exist yet
                 if ($( ".alarm_box" ).length == 0) {
-                    $( "body" ).append("<div class='alarm_box'></div>");
+                    $( "body" ).append("<div class='alarm_box' style='display: none;'></div>");
+                    $( ".alarm_box" ).fadeIn();
                 }
                 // set the new text of the alarm box
                 // leave line breaks between array items
