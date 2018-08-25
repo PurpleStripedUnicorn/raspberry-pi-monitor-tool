@@ -88,6 +88,31 @@ function g () {
         success: function (data) {
             // log all of the data to the console
             console.log(data);
+            // set the alarm box to be empty at first
+            alarm_box_text = [];
+
+            // check all alarm triggers for the alarm box
+            // check for high CPU usage (more than 80% avg.)
+            if (Number(data["cpu_usage_total"]) >= 80) {
+                alarm_box_text.push( "High CPU usage (" +
+                    data["cpu_usage_total"] + "%)" );
+            }
+            // check for high RAM usage (lower than 100 MB free)
+            if (Number(data["ram_free"]) <= 100000000) {
+                alarm_box_text.push( "High RAM usage (" +
+                    process_size(data["ram_free"]) + " free)" );
+            }
+            // check for high temps
+            // above 80'C means thermal throtteling
+            // above 65'C means high temp
+            if (Number(data["temp_cpu"]) >= 80) {
+                alarm_box_text.push( "CPU is thermal throtteling! (" +
+                    Number(data["temp_cpu"]).toFixed(1) + "°C)" );
+            } else if (Number(data["temp_cpu"]) >= 65) {
+                alarm_box_text.push( "CPU is hot (" +
+                    Number(data["temp_cpu"]).toFixed(1) + "°C)" );
+            }
+
             // retrieve all data points and fill them into
             //   the document
             // get all elements where data needs to be filled in
@@ -265,6 +290,26 @@ function g () {
                     }
                 }
             });
+
+            // update the alarm box
+            // check if there should be one first
+            if (alarm_box_text.length == 0) {
+                // no text was found, remove existing alarm box
+                $( ".alarm_box" ).remove();
+            } else {
+                // text was found, add alarm if it doesn't exist yet
+                if ($( ".alarm_box" ).length == 0) {
+                    $( "body" ).append("<div class='alarm_box'></div>");
+                }
+                // set the new text of the alarm box
+                // leave line breaks between array items
+                t = "";
+                for (i = 0; i < alarm_box_text.length; i++) {
+                    t += "<div>" + alarm_box_text[i] + "</div>";
+                }
+                $( ".alarm_box" ).html( t );
+            }
+
             // set a timer to request an update again in 100ms
             setTimeout(g, 100);
         },

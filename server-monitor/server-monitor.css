@@ -255,3 +255,24 @@ body {
     overflow: hidden;
     border-radius: 7px;
 }
+
+/* alarm box(es) in the bottom right of the screen */
+.alarm_box {
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    width: 260px;
+}
+
+.alarm_box > div {
+    color: white;
+    background-color: #f44e42;
+    border-radius: 5px;
+    padding: 13px 20px;
+    margin-top: 2px;
+    text-align: right;
+}
