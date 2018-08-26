@@ -49,6 +49,31 @@ if [ ${INSTA} = "1" ]; then
     echo $test_result | awk '{ print $5 }'
     echo "\","
 
+    # get the total usage since system start
+    echo "\"cpu_usage_since_startup_total\":\""
+    echo $test_result | awk '{ print $1 }'
+    echo "\","
+
+    # get the core 0 usage since system start
+    echo "\"cpu_usage_since_startup_core0\":\""
+    echo $test_result | awk '{ print $2 }'
+    echo "\","
+
+    # get the core 1 usage since system start
+    echo "\"cpu_usage_since_startup_core1\":\""
+    echo $test_result | awk '{ print $3 }'
+    echo "\","
+
+    # get the core 2 usage since system start
+    echo "\"cpu_usage_since_startup_core2\":\""
+    echo $test_result | awk '{ print $4 }'
+    echo "\","
+
+    # get the core 3 usage since system start
+    echo "\"cpu_usage_since_startup_core3\":\""
+    echo $test_result | awk '{ print $5 }'
+    echo "\","
+
 else
 
     # the package is not installed
