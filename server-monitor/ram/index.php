@@ -20,6 +20,9 @@
         <div class="content detail_content">
 
             <div class="detail_left">
+                <div class="graph_container mobile_graph_container"
+                     data-output-graph="ram_total">
+                </div>
                 <table class="large_table">
                     <tbody>
 

@@ -144,9 +144,12 @@ body {
     .detail_right {
         display: none;
     }
-    /* make sure to also hide graph indicators */
-    .graph_indicator {
-        display: none !important;
+    /* make the mobile graph visible (if it exists) */
+    .mobile_graph_container {
+        display: flex !important;
+    }
+    .mobile_long_graph_bar {
+        display: flex !important;
     }
 }
 
@@ -182,6 +185,12 @@ body {
 
 .graph_entry > div {
     background-color: #5b97e5;
+}
+
+/* graph on smaller devices */
+.mobile_graph_container {
+    height: 180px;
+    display: none;
 }
 
 /* indicator in front of the main text on a details page which indicates the
@@ -261,6 +270,10 @@ body {
     justify-content: flex-start;
     overflow: hidden;
     border-radius: 7px;
+}
+.mobile_long_graph_bar {
+    display: none;
+    height: 40px;
 }
 
 /* alarm box(es) in the bottom right of the screen */

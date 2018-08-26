@@ -20,6 +20,9 @@
         <div class="content detail_content">
 
             <div class="detail_left">
+                <div class="long_graph_bar mobile_long_graph_bar" data-output-graph="storage_total">
+
+                </div>
                 <table class="large_table">
                     <tbody>
 
