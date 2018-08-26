@@ -28,7 +28,7 @@
                                 LED 0 status
                             </td>
                             <td>
-                                <span data-output="led_led0_status">-</span>
+                                <span data-output="led_led0_status" data-output-colored>-</span>
                             </td>
                         </tr>
 
@@ -37,14 +37,14 @@
                                 LED 1 status
                             </td>
                             <td>
-                                <span data-output="led_led1_status">-</span>
+                                <span data-output="led_led1_status" data-output-colored>-</span>
                             </td>
                         </tr>
 
                     </tbody>
                 </table>
             </div>
-            
+
 
         </div>
     </div>

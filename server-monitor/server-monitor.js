@@ -288,10 +288,24 @@ function g () {
                         // status of indicator LEDs
                         case "led_led0_status":
                         case "led_led1_status":
-                        var val_str = String(data[output_type]);
-                        val_str = val_str == "1" ? "on" : "off";
+                        var val_state = String(data[output_type]) == "1" ? true : false;
+                        // check if the output box container should be colored
+                        // use green for "on" and red for "off"
+                        if ($obj.is("[data-output-colored]")) {
+                            // always show white color
+                            $obj.parent().css( "color", "white" );
+                            if (val_state) {
+                                // LED is on, turn green
+                                $obj.parent().css( "background-color", "#41d887" );
+                            } else {
+                                // LED is off, turn red
+                                $obj.parent().css( "background-color", "#d84841" );
+                            }
+                        }
+                        // generate output html
+                        out = val_state ? "on" : "off";
                         // output html
-                        $obj.html( val_str );
+                        $obj.html( out );
                         break;
 
 
