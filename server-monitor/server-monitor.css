@@ -61,6 +61,13 @@ body {
     flex-direction: column;
 }
 
+/* make tiles stretch the window on smaller devices */
+@media screen and (max-width: 580px) {
+    .tile {
+        width: 100%;
+    }
+}
+
 .tile_title {
     border-radius: 6px;
     text-align: center;
