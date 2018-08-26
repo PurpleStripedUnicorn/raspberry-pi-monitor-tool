@@ -71,10 +71,15 @@ function process_size (input) {
     } else {
         after_decimal_length = 0;
     }
-    return input.substr(0, cut_point) +
-           (after_decimal_length > 0 ? "." : "") +
-           input.substr(cut_point, after_decimal_length) +
-           suffix;
+    // get current number (without suffix)
+    cur = input.substr(0, cut_point) +
+          (after_decimal_length > 0 ? "." : "") +
+          input.substr(cut_point, after_decimal_length);
+    // check if the last digit shpould be rounded up
+    if (Number(input.substr(cut_point + after_decimal_length, 1)) >= 5) {
+        cur = cur.substr(0, cur.length - 1) + String(Number(cur.substr(cur.length - 1, 1)) + 1);
+    }
+    return cur + suffix;
 }
 
 // function to get all data
