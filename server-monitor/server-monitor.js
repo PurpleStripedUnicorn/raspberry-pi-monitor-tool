@@ -75,10 +75,6 @@ function process_size (input) {
     cur = input.substr(0, cut_point) +
           (after_decimal_length > 0 ? "." : "") +
           input.substr(cut_point, after_decimal_length);
-    // check if the last digit should be rounded up
-    if (Number(input.substr(cut_point + after_decimal_length, 1)) >= 5) {
-        cur = cur.substr(0, cur.length - 1) + String(Number(cur.substr(cur.length - 1, 1)) + 1);
-    }
     return cur + suffix;
 }
 
