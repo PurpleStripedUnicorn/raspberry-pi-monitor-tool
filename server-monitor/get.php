@@ -45,7 +45,7 @@ $result = array_merge( $result, assoc_from_script( "storage.sh" ) );
 $result = array_merge( $result, assoc_from_script( "ram.sh" ) );
 
 ### TEMPERATURES ###
-# get the temperatures of the CPU and GPU
+# get the temperature of the CPU
 $result = array_merge( $result, assoc_from_script( "temps.sh" ) );
 
 ### TIME THIS SCRIPT TOOK ###
