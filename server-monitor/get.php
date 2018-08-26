@@ -48,6 +48,10 @@ $result = array_merge( $result, assoc_from_script( "ram.sh" ) );
 # get the temperature of the CPU
 $result = array_merge( $result, assoc_from_script( "temps.sh" ) );
 
+### LED LIGHTS STATUS ###
+# check if LEDs 0 and 1 are on or off
+$result = array_merge( $result, assoc_from_script( "leds.sh" ) );
+
 ### TIME THIS SCRIPT TOOK ###
 # time in microseconds
 # start time is from start of the script

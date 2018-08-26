@@ -285,6 +285,16 @@ function g () {
                         break;
 
 
+                        // status of indicator LEDs
+                        case "led_led0_status":
+                        case "led_led1_status":
+                        var val_str = String(data[output_type]);
+                        val_str = val_str == "1" ? "on" : "off";
+                        // output html
+                        $obj.html( val_str );
+                        break;
+
+
                         default:
                         // the default is to just set the HTML to the data
                         //   that was returned

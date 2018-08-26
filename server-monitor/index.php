@@ -32,6 +32,9 @@
             <div class="tile">
                 <?php include "tile/temps.php"; ?>
             </div>
+            <div class="tile">
+                <?php include "tile/leds.php"; ?>
+            </div>
 
         </div>
     </div>
