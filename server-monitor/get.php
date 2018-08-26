@@ -33,14 +33,20 @@ $result = array();
 
 
 ### CPU ###
-# get CPU usage and temperature
+# get the CPU usage (if available)
 $result = array_merge( $result, assoc_from_script( "cpu.sh" ) );
 
 ### DISK SPACE ###
+# get used and reserved disk space
 $result = array_merge( $result, assoc_from_script( "storage.sh" ) );
 
 ### RAM USAGE/DISTRIBUTION ###
+# get free and used ram distribution
 $result = array_merge( $result, assoc_from_script( "ram.sh" ) );
+
+### TEMPERATURES ###
+# get the temperatures of the CPU and GPU
+$result = array_merge( $result, assoc_from_script( "temps.sh" ) );
 
 ### TIME THIS SCRIPT TOOK ###
 # time in microseconds

@@ -4,12 +4,6 @@
 echo "{"
 
 
-# CPU temperature in 'C
-echo "\"temp_cpu\":\""
-cat /sys/class/thermal/thermal_zone0/temp | awk '{ print ($1*0.001) }'
-echo "\","
-
-
 # check if the CPU usage can also be shown
 # do this by checking if the sysstat package is installed
 INSTA="$(dpkg -s sysstat | grep 'install ok' | wc -l)"
