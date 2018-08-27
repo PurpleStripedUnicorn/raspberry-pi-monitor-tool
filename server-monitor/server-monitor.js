@@ -305,6 +305,36 @@ function g () {
                         break;
 
 
+                        // status of wlan and ethernet connections
+                        case "network_eth_state":
+                        case "network_wlan_state":
+                        case "network_connection_type":
+                        // in case of state question, return "on" or "off"
+                        // otherwise return sent string
+                        if (output_type === "network_eth_state"
+                        || output_type === "network_wlan_state") {
+                            // check if the output box container should be colored
+                            // use green for "on" and red for "off"
+                            if ($obj.is("[data-output-colored]")) {
+                                // always show white color
+                                $obj.parent().css( "color", "white" );
+                                if (data[output_type] === "1") {
+                                    // connection type is on, turn green
+                                    $obj.parent().css( "background-color", "#41d887" );
+                                } else {
+                                    // connection type is off, turn red
+                                    $obj.parent().css( "background-color", "#d84841" );
+                                }
+                            }
+                            out = data[output_type] === "1" ? "on" : "off";
+                        } else {
+                            out = data[output_type];
+                        }
+                        // output html
+                        $obj.html( out );
+                        break;
+
+
                         default:
                         // the default is to just set the HTML to the data
                         //   that was returned

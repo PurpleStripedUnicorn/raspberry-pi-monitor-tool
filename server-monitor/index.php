@@ -35,6 +35,9 @@
             <div class="tile">
                 <?php include "tile/leds.php"; ?>
             </div>
+            <div class="tile">
+                <?php include "tile/network.php"; ?>
+            </div>
 
         </div>
     </div>

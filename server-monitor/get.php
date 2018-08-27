@@ -52,6 +52,10 @@ $result = array_merge( $result, assoc_from_script( "temps.sh" ) );
 # check if LEDs 0 and 1 are on or off
 $result = array_merge( $result, assoc_from_script( "leds.sh" ) );
 
+### NETWORK STATUS ###
+# ethernet and wlan statuses
+$result = array_merge( $result, assoc_from_script( "network.sh" ) );
+
 ### TIME THIS SCRIPT TOOK ###
 # time in microseconds
 # start time is from start of the script
