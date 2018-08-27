@@ -27,41 +27,30 @@ function assoc_from_script ($file) {
     return json_decode($output, true, 512, JSON_BIGINT_AS_STRING);
 }
 
+# function to add a script to the JSON data that is loaded
+# input is the filename of the script to add
+function add_script ($filename) {
+    # merge the already existing result array with the newly generated array
+    $GLOBALS["result"] = array_merge(
+        $GLOBALS["result"],
+        assoc_from_script( $filename )
+    );
+}
+
 # start with an empty result array to add results later
-$result = array();
+$GLOBALS["result"] = array();
 
+# add all of the scripts included in the "get" folder
+add_script( "cpu.sh" );
+add_script( "storage.sh" );
+add_script( "ram.sh" );
+add_script( "temps.sh" );
+add_script( "leds.sh" );
+add_script( "network.sh" );
 
-
-### CPU ###
-# get the CPU usage (if available)
-$result = array_merge( $result, assoc_from_script( "cpu.sh" ) );
-
-### DISK SPACE ###
-# get used and reserved disk space
-$result = array_merge( $result, assoc_from_script( "storage.sh" ) );
-
-### RAM USAGE/DISTRIBUTION ###
-# get free and used ram distribution
-$result = array_merge( $result, assoc_from_script( "ram.sh" ) );
-
-### TEMPERATURES ###
-# get the temperature of the CPU
-$result = array_merge( $result, assoc_from_script( "temps.sh" ) );
-
-### LED LIGHTS STATUS ###
-# check if LEDs 0 and 1 are on or off
-$result = array_merge( $result, assoc_from_script( "leds.sh" ) );
-
-### NETWORK STATUS ###
-# ethernet and wlan statuses
-$result = array_merge( $result, assoc_from_script( "network.sh" ) );
-
-### TIME THIS SCRIPT TOOK ###
-# time in microseconds
+# calculate the time this script took in seconds (precision is microseconds)
 # start time is from start of the script
 $result["query_time"] = number_format( (microtime(true) - $start_time), 3, ".", "," )."s";
 
-
-
-# get the first result
-echo json_encode($result);
+# echo the result encoded as JSON to be interpreted by javascript
+echo json_encode($GLOBALS["result"]);
