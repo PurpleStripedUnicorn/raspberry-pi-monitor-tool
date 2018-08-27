@@ -320,7 +320,7 @@ function g () {
             // check if there should be one first
             if (alarm_box_text.length == 0) {
                 // no text was found, remove existing alarm box
-                $( ".alarm_box" ).fadeOut();
+                $( ".alarm_box" ).remove();
             } else {
                 // text was found, add alarm if it doesn't exist yet
                 if ($( ".alarm_box" ).length == 0) {
