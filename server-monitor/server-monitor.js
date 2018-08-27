@@ -337,7 +337,7 @@ function g () {
             }
 
             // set a timer to request an update again in 100ms
-            setTimeout(g, 100);
+            setTimeout(g, 0);
         },
         error: function () {
             // set value of all elements that need to receive output to be an

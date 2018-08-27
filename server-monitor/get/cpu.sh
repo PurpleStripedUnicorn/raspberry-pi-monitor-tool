@@ -7,8 +7,8 @@ echo "{"
 # get the current cpu usage since startup
 usage_start="$(cat /proc/stat | awk '{ print ($2";"$4";"$5) }')"
 
-# sleep for 1 second to measure difference
-sleep 1
+# sleep for 0.5 seconds to measure difference
+sleep 0.5
 
 # measure again
 usage_end="$(cat /proc/stat | awk '{ print ($2";"$4";"$5) }')"
