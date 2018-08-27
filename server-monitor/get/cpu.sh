@@ -4,77 +4,51 @@
 echo "{"
 
 
-# check if the CPU usage can also be shown
-# do this by checking if the sysstat package is installed
-INSTA="$(dpkg -s sysstat | grep 'install ok' | wc -l)"
-echo "\"sysstat_installed\":\"${INSTA}\","
-# include sysstat installation status in the return JSON
-if [ ${INSTA} = "1" ]; then
+# get the current cpu usage since startup
+usage_start="$(cat /proc/stat | awk '{ print ($2";"$4";"$5) }')"
 
-    # the package is installed
-    # run test and get results
+# sleep for 1 second to measure difference
+sleep 1
 
-    # first run the test and save the results as a string
-    # get the usage of all processing cores
-    test_result="$(mpstat 1 1 -P ALL | awk '$12 ~ /[0-9.]+/ { print 100 - $12 }')"
+# measure again
+usage_end="$(cat /proc/stat | awk '{ print ($2";"$4";"$5) }')"
 
-    # total CPU usage
-    echo "\"cpu_usage_total\":\""
-    echo $test_result | awk '{ print $1 }'
-    echo "\","
+# process results
+total_vals="$(echo "$(echo "${usage_start}" | awk "NR==1 {print $1}");$(echo "${usage_end}" | awk "NR==1 {print $1}")")"
+total_usage="$(echo "${total_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
 
-    # Core 0 CPU usage
-    echo "\"cpu_usage_core0\":\""
-    echo $test_result | awk '{ print $2 }'
-    echo "\","
+core0_vals="$(echo "$(echo "${usage_start}" | awk "NR==2 {print $1}");$(echo "${usage_end}" | awk "NR==2 {print $1}")")"
+core0_usage="$(echo "${core0_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
 
-    # Core 1 CPU usage
-    echo "\"cpu_usage_core1\":\""
-    echo $test_result | awk '{ print $3 }'
-    echo "\","
+core1_vals="$(echo "$(echo "${usage_start}" | awk "NR==3 {print $1}");$(echo "${usage_end}" | awk "NR==3 {print $1}")")"
+core1_usage="$(echo "${core1_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
 
-    # Core 2 CPU usage
-    echo "\"cpu_usage_core2\":\""
-    echo $test_result | awk '{ print $4 }'
-    echo "\","
+core2_vals="$(echo "$(echo "${usage_start}" | awk "NR==4 {print $1}");$(echo "${usage_end}" | awk "NR==4 {print $1}")")"
+core2_usage="$(echo "${core2_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
 
-    # Core 3 CPU usage
-    echo "\"cpu_usage_core3\":\""
-    echo $test_result | awk '{ print $5 }'
-    echo "\","
+core3_vals="$(echo "$(echo "${usage_start}" | awk "NR==5 {print $1}");$(echo "${usage_end}" | awk "NR==5 {print $1}")")"
+core3_usage="$(echo "${core3_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
 
-    # get the total usage since system start
-    echo "\"cpu_usage_since_startup_total\":\""
-    echo $test_result | awk '{ print $1 }'
-    echo "\","
+# echo the results
+echo "\"cpu_usage_total\":\""
+echo ${total_usage}
+echo "\","
 
-    # get the core 0 usage since system start
-    echo "\"cpu_usage_since_startup_core0\":\""
-    echo $test_result | awk '{ print $2 }'
-    echo "\","
+echo "\"cpu_usage_core0\":\""
+echo ${core0_usage}
+echo "\","
 
-    # get the core 1 usage since system start
-    echo "\"cpu_usage_since_startup_core1\":\""
-    echo $test_result | awk '{ print $3 }'
-    echo "\","
+echo "\"cpu_usage_core1\":\""
+echo ${core1_usage}
+echo "\","
 
-    # get the core 2 usage since system start
-    echo "\"cpu_usage_since_startup_core2\":\""
-    echo $test_result | awk '{ print $4 }'
-    echo "\","
+echo "\"cpu_usage_core2\":\""
+echo ${core2_usage}
+echo "\","
 
-    # get the core 3 usage since system start
-    echo "\"cpu_usage_since_startup_core3\":\""
-    echo $test_result | awk '{ print $5 }'
-    echo "\","
-
-else
-
-    # the package is not installed
-    # wait 1 extra second (what the test would have taken)
-    sleep 1
-
-fi
+echo "\"cpu_usage_core3\":\""
+echo ${core3_usage}
+echo "\","
 
 
 # end JSON output

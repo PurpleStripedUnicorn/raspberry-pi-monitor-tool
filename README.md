@@ -11,12 +11,11 @@ your website. Now go to your-website.com/server-monitor and see the results.
 ## Requirements
 The following things are or may be required for the monitoring tool to work properly:
 * A raspberry pi 3 Model B (not tested on other devices)
-* Apache installed on your raspberry pi
-* PHP ready on your apache server
+* Apache is installed on your raspberry pi
+* PHP is ready on your apache server
 * All scripts have permission to use the "exec()" function in PHP (setting the folder's
 permission to 777 is enough most of the time)
-* Have "sysstat" installed on your raspberry pi (for all features)
-* Have the latest version of raspbian installed
+* Have the latest version of Raspbian installed
 
 ## Troubleshooting
 It may be possible that you are experiencing bugs or other abnormalities. Please
