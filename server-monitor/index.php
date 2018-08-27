@@ -4,7 +4,6 @@
 <html lang="en-gb">
 <head>
 
-    <!-- title at the top of the screen -->
     <title>Server monitor</title>
 
     <base href="./" />
