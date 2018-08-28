@@ -85,6 +85,7 @@ function g () {
         url: "get.php",
         type: "post", // send post request
         dataType: "json", // returned data type is JSON
+        cache: false, // disable cached results and go straight to server
         // function for if data is retrieved successfully
         success: function (data) {
             // log all of the data to the console
