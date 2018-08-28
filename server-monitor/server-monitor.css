@@ -34,6 +34,11 @@ body {
     font-family: "Open sans", sans-serif;
 }
 
+.top_title h1 a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 .content {
     flex-grow: 1;
     flex-shrink: 1;

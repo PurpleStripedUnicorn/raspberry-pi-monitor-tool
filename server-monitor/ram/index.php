@@ -13,9 +13,7 @@
 <body>
 
     <div class="main_container">
-        <div class="top_title">
-            <h1>server monitor</h1>
-        </div>
+        <?php include dirname(__DIR__)."/top_title.php"; ?>
         <div class="content detail_content">
 
             <div class="detail_left">

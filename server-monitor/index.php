@@ -13,9 +13,7 @@
 <body>
 
     <div class="main_container">
-        <div class="top_title">
-            <h1>server monitor</h1>
-        </div>
+        <?php include "top_title.php"; ?>
         <div class="content tile_container">
 
             <!-- all tiles with information -->
