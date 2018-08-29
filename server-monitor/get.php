@@ -9,10 +9,10 @@ function convert_lf ($string) {
     return preg_replace("/\r\n|\r|\n/", "\n", $string);
 }
 
-# function to get the content of a bash shell script inside the "get" folder
+# function to get the content of a bash shell script inside the main folder
 # output automatically converts all line endings to Linux line endings
 function file_get ($file) {
-    return convert_lf( file_get_contents( __DIR__ . "/get" . "/" . $file ) );
+    return convert_lf( file_get_contents( __DIR__ . "/" . $file ) );
 }
 
 # function to get the result of a script file as an associative array
@@ -40,13 +40,8 @@ function add_script ($filename) {
 # start with an empty result array to add results later
 $GLOBALS["result"] = array();
 
-# add all of the scripts included in the "get" folder
-add_script( "cpu.sh" );
-add_script( "storage.sh" );
-add_script( "ram.sh" );
-add_script( "temps.sh" );
-add_script( "leds.sh" );
-add_script( "network.sh" );
+# run the "get.sh" and add the JSON result to the result array
+add_script( "get.sh" );
 
 # calculate the time this script took in seconds (precision is microseconds)
 # start time is from start of the script
