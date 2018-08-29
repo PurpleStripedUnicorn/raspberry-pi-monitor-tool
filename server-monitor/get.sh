@@ -181,8 +181,6 @@ temps()
 
 
 # get all the results by running functions asynchonously
-cpu &
-cpu_pid=$!
 leds &
 leds_pid=$!
 network &
@@ -195,7 +193,14 @@ temps &
 temps_pid=$!
 
 # wait for all results to come in
-wait ${cpu_pid} ${leds_pid} ${network_pid} ${ram_pid} ${storage_pid} ${temps_pid}
+wait ${leds_pid} ${network_pid} ${ram_pid} ${storage_pid} ${temps_pid}
+
+# measure CPU usage afterwards for more accurate results
+cpu &
+cpu_pid=$!
+
+# wait for CPU results to come in
+wait ${cpu_pid}
 
 # end the JSON result
 echo "\"NULL\":\"NULL\"}"
