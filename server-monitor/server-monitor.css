@@ -55,15 +55,24 @@ body {
 }
 
 .tile {
+    font-size: 16px;
     background-color: #eee;
     border-radius: 10px;
     box-sizing: border-box;
     padding: 7px;
     width: 240px;
     height: 240px;
+    min-width: 20vw;
+    min-height: 20vw;
     margin: 8px;
     display: flex;
     flex-direction: column;
+}
+/* make text larger on large devices */
+@media screen and (min-width: 1200px) {
+    .tile {
+        font-size: 1.333vw;
+    }
 }
 
 /* make tiles stretch the window on smaller devices */
@@ -107,7 +116,7 @@ body {
 }
 
 .tile_more_button {
-    padding: 4px 0;
+    padding: .25em 0;
     height: auto;
     flex-basis: auto;
     display: flex;
@@ -116,11 +125,11 @@ body {
     justify-content: flex-end;
 }
 .tile_more_button > a {
-    padding: 4px 9px;
+    padding: .25em .6em;
     font-size: .93em;
     color: white;
     background-color: #5b97e5;
-    border-radius: 4px;
+    border-radius: .25em;
     text-decoration: none;
 }
 .tile_more_button > a:hover,
