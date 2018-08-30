@@ -3,7 +3,7 @@
 <div class="tile_info_container">
     <div class="tile_info_item">
         <span data-output="ram_free" data-output-process>-</span>
-        <span style="font-size: 14px; color: grey;">RAM free</span>
+        <span class="small_under_title">RAM free</span>
     </div>
 </div>
 <div class="tile_more_button">

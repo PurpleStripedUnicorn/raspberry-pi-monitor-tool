@@ -101,6 +101,11 @@ body {
     justify-content: center;
 }
 
+.tile_info_item .small_under_title {
+    font-size: .4em;
+    color: grey;
+}
+
 .tile_more_button {
     padding: 4px 0;
     height: auto;

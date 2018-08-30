@@ -3,7 +3,7 @@
 <div class="tile_info_container">
     <div class="tile_info_item">
         <span data-output="storage_free" data-output-process>-</span>
-        <span style="font-size: 14px; color: grey;">Storage free</span>
+        <span class="small_under_title">Storage free</span>
     </div>
 </div>
 <div class="tile_more_button">

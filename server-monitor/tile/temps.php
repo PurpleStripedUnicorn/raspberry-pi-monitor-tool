@@ -3,7 +3,7 @@
 <div class="tile_info_container">
     <div class="tile_info_item">
         <span data-output="temp_cpu">-</span>
-        <span style="font-size: 14px; color: grey;">CPU temperature</span>
+        <span class="small_under_title">CPU temperature</span>
     </div>
 </div>
 <div class="tile_more_button">

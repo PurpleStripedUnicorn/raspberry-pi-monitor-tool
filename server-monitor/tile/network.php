@@ -3,7 +3,7 @@
 <div class="tile_info_container">
     <div class="tile_info_item">
         <span data-output="network_connection_type">-</span>
-        <span style="font-size: 14px; color: grey;">Connection type</span>
+        <span class="small_under_title">Connection type</span>
     </div>
 </div>
 <div class="tile_more_button">
