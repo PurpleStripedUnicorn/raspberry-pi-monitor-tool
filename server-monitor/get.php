@@ -15,7 +15,9 @@ $GLOBALS["result"] = array();
 # get the contents of the script that needs to be executed
 # check if this content was already loaded at the first connection try and
 #   cached into global variables
-$GLOBALS["cache_allowed"] = ($_POST["cache"] == "true");
+$GLOBALS["cache_allowed"] = (
+    isset($_POST["cache"]) ? $_POST["cache"] == "true" : false
+);
 if ($GLOBALS["cache_allowed"] && isset($_SESSION["cached_command"])) {
     # don't reload the command because caching is on and it was already loaded
     $GLOBALS["result"]["cache"] = "true";
