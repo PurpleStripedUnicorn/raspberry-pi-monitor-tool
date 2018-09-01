@@ -29,8 +29,8 @@ if ($GLOBALS["cache_allowed"] && isset($_SESSION["cached_command"])) {
     $GLOBALS["result"]["cache"] = "false";
     # add timing to result array
     $result["cache_refresh_time"] = number_format(
-        (microtime(true) - $file_get_start_time), 6, ".", ","
-    )."s";
+        (microtime(true) - $start_time) * 1000, 2, ".", ","
+        )."ms";
 }
 
 # function to convert all line endings to Linux line endings
