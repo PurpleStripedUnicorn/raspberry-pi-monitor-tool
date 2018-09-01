@@ -10,6 +10,8 @@ echo "{"
 cpu()
 {
 
+    start_time=`date +%s%3N`
+
     # prepare CPU result string
     result=""
 
@@ -48,6 +50,11 @@ cpu()
     # echo the results
     echo "${result}"
 
+    # also echo the processing time of this part
+    end_time=`date +%s%3N)`
+    process_time="$((end_time - start_time))"
+    echo "\"process_time_cpu\":\""${process_time}"ms\","
+
 }
 
 
@@ -55,6 +62,8 @@ cpu()
 # directly add them to the result by using echo
 leds()
 {
+
+    start_time=`date +%s%3N`
 
     # prepare result string
     result=""
@@ -83,6 +92,11 @@ leds()
     # echo the result string
     echo ${result}
 
+    # also echo the processing time of this part
+    end_time=`date +%s%3N)`
+    process_time="$((end_time - start_time))"
+    echo "\"process_time_led\":\""${process_time}"ms\","
+
 }
 
 
@@ -90,6 +104,8 @@ leds()
 # directly add them to the result by using echo
 network()
 {
+
+    start_time=`date +%s%3N`
 
     # prepare result string
     result=""
@@ -116,6 +132,11 @@ network()
     # echo result string
     echo ${result}
 
+    # also echo the processing time of this part
+    end_time=`date +%s%3N)`
+    process_time="$((end_time - start_time))"
+    echo "\"process_time_network\":\""${process_time}"ms\","
+
 }
 
 
@@ -123,6 +144,8 @@ network()
 # directly add them to the result by using echo
 ram()
 {
+
+    start_time=`date +%s%3N`
 
     # prepare result string
     result=""
@@ -138,6 +161,11 @@ ram()
     # echo result string
     echo ${result}
 
+    # also echo the processing time of this part
+    end_time=`date +%s%3N)`
+    process_time="$((end_time - start_time))"
+    echo "\"process_time_ram\":\""${process_time}"ms\","
+
 }
 
 
@@ -145,6 +173,8 @@ ram()
 # directly add them to the result by using echo
 storage()
 {
+
+    start_time=`date +%s%3N`
 
     # prepare result string
     result=""
@@ -159,6 +189,11 @@ storage()
     # echo result string
     echo ${result}
 
+    # also echo the processing time of this part
+    end_time=`date +%s%3N)`
+    process_time="$((end_time - start_time))"
+    echo "\"process_time_storage\":\""${process_time}"ms\","
+
 }
 
 
@@ -166,6 +201,8 @@ storage()
 # directly add them to the result by using echo
 temps()
 {
+
+    start_time=`date +%s%3N`
 
     # prepare result string
     result=""
@@ -176,11 +213,16 @@ temps()
     # echo result string
     echo ${result}
 
+    # also echo the processing time of this part
+    end_time=`date +%s%3N)`
+    process_time="$((end_time - start_time))"
+    echo "\"process_time_temps\":\""${process_time}"ms\","
+
 }
 
 
 
-# get all the results by running functions asynchonously
+# get all the results by running functions asynchronously
 leds &
 leds_pid=$!
 network &
