@@ -72,7 +72,7 @@ add_script( "get.sh" );
 
 # calculate the time this script took in seconds (precision is microseconds)
 # start time is from start of the script
-$result["query_time"] = number_format( (microtime(true) - $start_time), 6, ".", "," )."s";
+$result["query_time"] = number_format( (microtime(true) - $start_time) * 1000, 0, ".", "," )."ms";
 
 # echo the result encoded as JSON to be interpreted by javascript
 echo json_encode($GLOBALS["result"]);
