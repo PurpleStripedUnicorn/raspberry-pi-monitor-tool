@@ -17,24 +17,27 @@
         <div class="content tile_container">
 
             <!-- all tiles with information -->
-            <div class="tile">
-                <?php include "tile/cpu.php"; ?>
-            </div>
-            <div class="tile">
-                <?php include "tile/ram.php"; ?>
-            </div>
-            <div class="tile">
-                <?php include "tile/storage.php"; ?>
-            </div>
-            <div class="tile">
-                <?php include "tile/temps.php"; ?>
-            </div>
-            <div class="tile">
-                <?php include "tile/leds.php"; ?>
-            </div>
-            <div class="tile">
-                <?php include "tile/network.php"; ?>
-            </div>
+            <?php
+
+            # list all of the filenames of the files containing the tile
+            # list is in order of appearence
+            $tile_list = array(
+                "cpu",
+                "ram",
+                "storage",
+                "temps",
+                "leds",
+                "network"
+            );
+
+            foreach ($tile_list as $tilename) {
+                # display tile with tile file included
+                echo "<div class='tile'>";
+                include "tile/$tilename.php";
+                echo "</div>";
+            }
+
+            ?>
 
         </div>
     </div>
