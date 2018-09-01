@@ -182,12 +182,15 @@ storage()
     # prepare result string
     result=""
 
+    # get all info about storage
+    storage_info="$(df --block-size 1 | sed -n '2 p')"
+
     # get all storage information
     # reserved = total - used - free
-    result="${result}\"storage_total\":\"$(df --block-size 1 | awk '$2 { print $2 }' | sed -n '2 p')\","
-    result="${result}\"storage_used\":\"$(df --block-size 1 | awk '$3 { print $3 }' | sed -n '2 p')\","
-    result="${result}\"storage_free\":\"$(df --block-size 1 | awk '$4 { print $4 }' | sed -n '2 p')\","
-    result="${result}\"storage_reserved\":\"$(df --block-size 1 | awk '{ print ($2 - $3 - $4) }' | sed -n '2 p')\","
+    result="${result}\"storage_total\":\"$(echo "${storage_info}" | awk '$2 { print $2 }')\","
+    result="${result}\"storage_used\":\"$(echo "${storage_info}" | awk '$3 { print $3 }')\","
+    result="${result}\"storage_free\":\"$(echo "${storage_info}" | awk '$4 { print $4 }')\","
+    result="${result}\"storage_reserved\":\"$(echo "${storage_info}" | awk '{ print ($2 - $3 - $4) }')\","
 
     # echo result string
     echo ${result}
