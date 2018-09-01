@@ -51,7 +51,7 @@ cpu()
     echo "${result}"
 
     # also echo the processing time of this part
-    end_time=`date +%s%3N)`
+    end_time=`date +%s%3N`
     process_time="$((end_time - start_time))"
     echo "\"process_time_cpu\":\""${process_time}"ms\","
 
@@ -93,7 +93,7 @@ leds()
     echo ${result}
 
     # also echo the processing time of this part
-    end_time=`date +%s%3N)`
+    end_time=`date +%s%3N`
     process_time="$((end_time - start_time))"
     echo "\"process_time_led\":\""${process_time}"ms\","
 
@@ -133,7 +133,7 @@ network()
     echo ${result}
 
     # also echo the processing time of this part
-    end_time=`date +%s%3N)`
+    end_time=`date +%s%3N`
     process_time="$((end_time - start_time))"
     echo "\"process_time_network\":\""${process_time}"ms\","
 
@@ -150,19 +150,22 @@ ram()
     # prepare result string
     result=""
 
+    # get all ram information
+    ram_info="$(free -b)"
+
     # add all RAM information to result
-    result="${result}\"ram_total\":\"$(free -b | awk '$2 { print $2 }' | sed -n '2 p')\","
-    result="${result}\"ram_used\":\"$(free -b | awk '$3 { print $3 }' | sed -n '2 p')\","
-    result="${result}\"ram_free\":\"$(free -b | awk '$4 { print $4 }' | sed -n '2 p')\","
-    result="${result}\"ram_shared\":\"$(free -b | awk '$5 { print $5 }' | sed -n '2 p')\","
-    result="${result}\"ram_buff_cache\":\"$(free -b | awk '$6 { print $6 }' | sed -n '2 p')\","
-    result="${result}\"ram_available\":\"$(free -b | awk '$7 { print $7 }' | sed -n '1 p')\","
+    result="${result}\"ram_total\":\"$(echo "${ram_info}" | awk '$2 { print $2 }' | sed -n '2 p')\","
+    result="${result}\"ram_used\":\"$(echo "${ram_info}" | awk '$3 { print $3 }' | sed -n '2 p')\","
+    result="${result}\"ram_free\":\"$(echo "${ram_info}" | awk '$4 { print $4 }' | sed -n '2 p')\","
+    result="${result}\"ram_shared\":\"$(echo "${ram_info}" | awk '$5 { print $5 }' | sed -n '2 p')\","
+    result="${result}\"ram_buff_cache\":\"$(echo "${ram_info}" | awk '$6 { print $6 }' | sed -n '2 p')\","
+    result="${result}\"ram_available\":\"$(echo "${ram_info}" | awk '$7 { print $7 }' | sed -n '1 p')\","
 
     # echo result string
     echo ${result}
 
     # also echo the processing time of this part
-    end_time=`date +%s%3N)`
+    end_time=`date +%s%3N`
     process_time="$((end_time - start_time))"
     echo "\"process_time_ram\":\""${process_time}"ms\","
 
@@ -190,7 +193,7 @@ storage()
     echo ${result}
 
     # also echo the processing time of this part
-    end_time=`date +%s%3N)`
+    end_time=`date +%s%3N`
     process_time="$((end_time - start_time))"
     echo "\"process_time_storage\":\""${process_time}"ms\","
 
@@ -214,7 +217,7 @@ temps()
     echo ${result}
 
     # also echo the processing time of this part
-    end_time=`date +%s%3N)`
+    end_time=`date +%s%3N`
     process_time="$((end_time - start_time))"
     echo "\"process_time_temps\":\""${process_time}"ms\","
 
