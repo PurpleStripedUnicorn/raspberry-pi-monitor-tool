@@ -27,7 +27,8 @@
                 "storage",
                 "temps",
                 "leds",
-                "network"
+                "network",
+                "raw"
             );
 
             foreach ($tile_list as $tilename) {
