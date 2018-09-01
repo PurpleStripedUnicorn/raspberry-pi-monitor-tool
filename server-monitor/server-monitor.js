@@ -1,4 +1,7 @@
 
+// set global variable to not cache on first connection try
+var no_cache = true;
+
 // function for getting a value on a grdient, input are objects of start and end
 //   of gradient and the progress (0-1) through the gradient from start to end
 function get_gradient (start, end, progress) {
@@ -84,10 +87,15 @@ function g () {
     $.ajax({
         url: "get.php",
         type: "post", // send post request
+        data: {
+            cache: !no_cache
+        },
         dataType: "json", // returned data type is JSON
         cache: false, // disable cached results and go straight to server
         // function for if data is retrieved successfully
         success: function (data) {
+            // turn caching on after first try
+            no_cache = false;
             // log all of the data to the console
             console.log(data);
             // set the alarm box to be empty at first
