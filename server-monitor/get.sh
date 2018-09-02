@@ -24,28 +24,34 @@ cpu()
     # measure again
     usage_end="$(cat /proc/stat | awk '{ print ($2";"$4";"$5) }')"
 
-    # process results
+    # process total usage
     total_vals="$(echo "$(echo "${usage_start}" | awk "NR==1 {print $1}");$(echo "${usage_end}" | awk "NR==1 {print $1}")")"
     total_usage="$(echo "${total_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
 
-    core0_vals="$(echo "$(echo "${usage_start}" | awk "NR==2 {print $1}");$(echo "${usage_end}" | awk "NR==2 {print $1}")")"
-    core0_usage="$(echo "${core0_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
-
-    core1_vals="$(echo "$(echo "${usage_start}" | awk "NR==3 {print $1}");$(echo "${usage_end}" | awk "NR==3 {print $1}")")"
-    core1_usage="$(echo "${core1_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
-
-    core2_vals="$(echo "$(echo "${usage_start}" | awk "NR==4 {print $1}");$(echo "${usage_end}" | awk "NR==4 {print $1}")")"
-    core2_usage="$(echo "${core2_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
-
-    core3_vals="$(echo "$(echo "${usage_start}" | awk "NR==5 {print $1}");$(echo "${usage_end}" | awk "NR==5 {print $1}")")"
-    core3_usage="$(echo "${core3_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
-
-    # add test results to result string
+    # add total usage to result json
     result="${result}\"cpu_usage_total\":\""${total_usage}"\","
-    result="${result}\"cpu_usage_core0\":\""${core0_usage}"\","
-    result="${result}\"cpu_usage_core1\":\""${core1_usage}"\","
-    result="${result}\"cpu_usage_core2\":\""${core2_usage}"\","
-    result="${result}\"cpu_usage_core3\":\""${core3_usage}"\","
+
+    # process per core usage
+
+    # get the amount of cores in the system
+    core_count="$(cat /proc/stat | grep '^cpu[0-9]' | wc -l)"
+
+    # go through every numbered core
+    n=0
+    while [ ${n} -lt ${core_count} ]; do
+
+        # get the row of /proc/stat to analyze for cpu usage
+        core_row="$((${n} + 2))"
+        # get the values of current core
+        core_vals="$(echo "$(echo "${usage_start}" | awk "NR==${core_row} {print $1}");$(echo "${usage_end}" | awk "NR==${core_row} {print $1}")")"
+        # calculate usage of the current core (rouded to 2 digits)
+        core_usage="$(echo "${core_vals}" | awk '{ split($1,b,";"); print ((b[4]-b[1]+b[5]-b[2])/(b[4]-b[1]+b[5]-b[2]+b[6]-b[3])*100) }' | awk '{ printf("%.2f\n", $1); }')"
+        # add core usage to result
+        result="${result}\"cpu_usage_core${n}\":\""${core_usage}"\","
+
+        n=$((${n} + 1))
+
+    done
 
     # echo the results
     echo "${result}"
