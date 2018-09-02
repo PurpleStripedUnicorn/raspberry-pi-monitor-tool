@@ -32,41 +32,36 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>
-                                CPU usage (core 0)
-                            </td>
-                            <td>
-                                <span data-output="cpu_usage_core0" data-output-colored>-</span>
-                            </td>
-                        </tr>
+                        <?php
 
-                        <tr>
-                            <td>
-                                CPU usage (core 1)
-                            </td>
-                            <td>
-                                <span data-output="cpu_usage_core1" data-output-colored>-</span>
-                            </td>
-                        </tr>
+                        # get the amount of cores in the system
 
-                        <tr>
-                            <td>
-                                CPU usage (core 2)
-                            </td>
-                            <td>
-                                <span data-output="cpu_usage_core2" data-output-colored>-</span>
-                            </td>
-                        </tr>
+                        # first, get the result JSON of the "get.php" file
+                        ob_start();
+                        include dirname(__DIR__)."/get.php";
+                        $json = ob_get_contents();
+                        ob_end_clean();
 
-                        <tr>
-                            <td>
-                                CPU usage (core 3)
-                            </td>
-                            <td>
-                                <span data-output="cpu_usage_core3" data-output-colored>-</span>
-                            </td>
-                        </tr>
+                        # convert the JSON to an associative array
+                        $assoc = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
+
+                        # order the array in alphabetic order by key
+                        ksort($assoc);
+
+                        # go through every key and value in the array and put
+                        #   it into the table
+                        foreach ($assoc as $key => $val) {
+
+                            # if the key starts with "cpu_usage_core", add item
+                            if (substr($key, 0, 14) === "cpu_usage_core") {
+                                # add core to list
+                                $core_num = substr($key, 14);
+                                echo "<tr><td>CPU usage (core $core_num)</td><td><span data-output='$key' data-output-colored>-</span></td></tr>";
+                            }
+
+                        }
+
+                        ?>
 
                     </tbody>
                 </table>
@@ -77,25 +72,26 @@
                      data-output-graph="cpu_usage_total">
                 </div>
 
-                <h1>CPU usage - core 0 (%)</h1>
-                <div class="graph_container"
-                     data-output-graph="cpu_usage_core0">
-                </div>
+                <?php
 
-                <h1>CPU usage - core 1 (%)</h1>
-                <div class="graph_container"
-                     data-output-graph="cpu_usage_core1">
-                </div>
+                # go through every key and value in the array and show a graph
+                #   for it
+                foreach ($assoc as $key => $val) {
 
-                <h1>CPU usage - core 2 (%)</h1>
-                <div class="graph_container"
-                     data-output-graph="cpu_usage_core2">
-                </div>
+                    # if the key starts with "cpu_usage_core", add item
+                    if (substr($key, 0, 14) === "cpu_usage_core") {
+                        # add core to list
+                        $core_num = substr($key, 14);
+                        echo "<h1>CPU usage - core $core_num (%)</h1>
+                        <div class='graph_container'
+                             data-output-graph='$key'>
+                        </div>";
+                    }
 
-                <h1>CPU usage - core 3 (%)</h1>
-                <div class="graph_container"
-                     data-output-graph="cpu_usage_core3">
-                </div>
+                }
+
+                ?>
+
             </div>
 
         </div>

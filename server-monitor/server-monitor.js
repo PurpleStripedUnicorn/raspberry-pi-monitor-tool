@@ -130,12 +130,15 @@ function g () {
                 // get the current object and define it as variable
                 var $obj = $( this );
                 // get the output type requested
-                var output_type = $obj.is("[data-output]") ?
-                                  $obj.attr("data-output") :
-                                  $obj.attr("data-output-graph");
+                var orig_output_type = $obj.is("[data-output]") ?
+                                       $obj.attr("data-output") :
+                                       $obj.attr("data-output-graph");
+                var output_type = orig_output_type.substr(0, 14) === "cpu_usage_core" ?
+                                  "cpu_usage_core" :
+                                  orig_output_type;
                 // check if the output type is given in the data
                 // if not, set the HTML to be "N/A"
-                if (!(output_type in data)) {
+                if (!(orig_output_type in data)) {
                     // the requested output is not available
                     $( this ).html( "N/A" );
                 } else {
@@ -146,13 +149,10 @@ function g () {
 
                         // total cpu usage percentage
                         case "cpu_usage_total":
-                        case "cpu_usage_core0":
-                        case "cpu_usage_core1":
-                        case "cpu_usage_core2":
-                        case "cpu_usage_core3":
+                        case "cpu_usage_core":
                         // get the value returned as number and string
-                        var val_num = Number(data[output_type]);
-                        var val_str = String(data[output_type]);
+                        var val_num = Number(data[orig_output_type]);
+                        var val_str = String(data[orig_output_type]);
                         if ($obj.is("[data-output-graph]")) {
                             // insert graph entry into the graph
                             $obj.append( "<div class='graph_entry'>"+
